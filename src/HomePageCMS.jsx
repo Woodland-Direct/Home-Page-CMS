@@ -84,9 +84,10 @@ export default class HomePageCMS extends React.Component {
 
   removeLine = (type, idx) => {
     let stateType = this.state[type]
+    console.log('ids', idx)
     this.setState((prevState) => {
       return {
-        stateType: prevState[type].items.splice(idx, 1)
+        stateType: prevState[type].items.splice(idx,1)
       }
     })
   }
