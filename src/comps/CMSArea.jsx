@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import LabelAndInput from './LabelAndInput'
 
 export default class CMSArea extends React.Component {
   constructor (props) {
@@ -15,33 +16,19 @@ export default class CMSArea extends React.Component {
     return editedItem
   }
   render () {
+    let divStyle = {
+      color: 'red',
+      gridColumnStart: 1
+    }
     return (
       <React.Fragment>
-        <div>{this.props.data.title}</div> <div onClick={() => this.props.addLine(this.props.type)}> + </div>
+        <div style={{gridColumnStart: '2'}}><div>{this.props.data.title}</div> <div onClick={() => this.props.addLine(this.props.type)}> + </div></div>
         {this.props.data.items.length &&
           this.props.data.items.map((item, idx) => (
-            <div key={'container' + idx} style={{ display: 'flex' }}>
-              <label key={idx + this.props.type + 'img'}> Image: </label>
-              <input
-                key={idx + 1 + this.props.type + 'img'}
-                name='image'
-                value={item.image}
-                onChange={e => this.onChange(e, idx, e.target.name)}
-              />
-              <label key={idx + this.props.type + 'link'}> Link: </label>
-              <input
-                key={idx + 1 + this.props.type + 'link'}
-                name='link'
-                value={item.link}
-                onChange={e => this.onChange(e, idx, e.target.name)}
-              />
-              <label key={idx + this.props.type + 'text'}> Text: </label>
-              <input
-                key={idx + 1 + this.props.type + 'text'}
-                name='text'
-                value={item.text}
-                onChange={e => this.onChange(e, idx, e.target.name)}
-              />
+          <div key={'container' + idx} >
+              <StyledLabel style={divStyle}label={'Image: '} name={'image'} value={item.image} onChange={e => this.onChange(e,idx,e.target.name)}/>
+              <LabelAndInput label={'Link: '} name={'link'} value={item.link} onChange={e => this.onChange(e,idx,e.target.name)}/>
+              <LabelAndInput label={'Text: '} name={'text'} value={item.text} onChange={e => this.onChange(e,idx,e.target.name)}/>
               <div key={'remove'} onClick={() => this.props.removeLine(this.props.type, idx)}>-REMOVE-</div>
             </div>
           ))}

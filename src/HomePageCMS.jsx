@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import HeroArea from './comps/HeroArea.jsx'
 import CMSArea from './comps/CMSArea.jsx'
 import Button from './comps/Button.jsx'
@@ -66,6 +67,11 @@ const data = {
   }
 }
 
+const Container = styled.div`
+display: grid;
+grid-template-columns: repeat(4,1fr);
+`
+
 export default class HomePageCMS extends React.Component {
   constructor () {
     super()
@@ -129,6 +135,7 @@ export default class HomePageCMS extends React.Component {
     return (
       <React.Fragment>
         <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
+        <Container>
         <CMSArea
           data={this.state.spotlight}
           type={'spotlight'}
@@ -150,6 +157,7 @@ export default class HomePageCMS extends React.Component {
           addLine={this.addLine}
           removeLine={this.removeLine}
         />
+        </Container>
         <Button onClick={this.displayJSON} label={' Preview JSON '} />
       </React.Fragment>
     )
