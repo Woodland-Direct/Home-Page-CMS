@@ -1,35 +1,56 @@
 import React, { Component } from 'react'
-// import HeroArea from './comps/HeroArea.jsx'
+import HeroArea from './comps/HeroArea.jsx'
 import CMSArea from './comps/CMSArea.jsx'
-
+import Button from './comps/Button.jsx'
 const data = {
   hero: {
-    image: '',
-    link: '',
-    text: ''
+    image: 'www.starwars.com',
+    link: 'www.starwars.com',
+    text: 'Shop The Galaxy'
   },
   spotlight: {
-    title: 'SPOT',
+    title: 'Spotlight',
     items: [
       {
-        image: '',
-        link: '',
-        text: 'spotlight'
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'spotlight',
+        order: 1
       }
     ]
   },
   cats: {
-    title: 'Categories List',
+    title: 'Categories',
     items: [
       {
-        image: '',
-        link: '',
-        text: 'cats'
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'Fireplace',
+        order: 1
       },
       {
-        image: '',
-        link: '',
-        text: 'cats2'
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'Woood Stove',
+        order: 2
+      },
+      {
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'Chimney',
+        order: 3
+      },
+      {
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'Outdoor',
+        order: 4
+      },
+      {
+        image: 'www.starwars.com',
+        link: 'www.starwars.com',
+        text: 'Promotions',
+        order: 5
       }
     ]
   },
@@ -46,7 +67,7 @@ const data = {
 }
 
 export default class HomePageCMS extends React.Component {
-  constructor() {
+  constructor () {
     super()
     this.state = {
       hero: data.hero,
@@ -56,7 +77,7 @@ export default class HomePageCMS extends React.Component {
     }
   }
 
-  onChange = (type, idx, item) => {
+  changeItemData = (type, idx, item) => {
     // use the type to get which we are editing
     let specificItem = this.state[type]
     // then use the idx to access the array of that type
@@ -67,14 +88,22 @@ export default class HomePageCMS extends React.Component {
     console.log(this.state[type])
   }
 
-  addLine = (type) => {
+  changeHeroData = e => {
+    let newHeroValue = this.state.hero
+    newHeroValue[e.target.name] = e.target.value
+    this.setState({
+      hero: newHeroValue
+    })
+  }
+
+  addLine = type => {
     let newLine = {
       image: '',
       link: '',
       text: ''
     }
     let stateType = this.state[type]
-    this.setState((prevState) => {
+    this.setState(prevState => {
       console.log('pr', prevState[type].items)
       return {
         stateType: prevState[type].items.push(newLine)
@@ -85,22 +114,43 @@ export default class HomePageCMS extends React.Component {
   removeLine = (type, idx) => {
     let stateType = this.state[type]
     console.log('ids', idx)
-    this.setState((prevState) => {
+    this.setState(prevState => {
       return {
-        stateType: prevState[type].items.splice(idx,1)
+        stateType: prevState[type].items.splice(idx, 1)
       }
     })
   }
 
-  render() {
+  displayJSON = () => {
+    alert(JSON.stringify(this.state))
+  }
+
+  render () {
     return (
       <React.Fragment>
-      {/* <HeroArea data={this.state.hero} /> */}
-      <CMSArea data={this.state.spotlight} type={'spotlight'} onChange={this.onChange} addLine={this.addLine} removeLine={this.removeLine} />
-      <CMSArea data={this.state.cats} type={'cats'} onChange={this.onChange} addLine={this.addLine} removeLine={this.removeLine} />
-      <CMSArea data={this.state.trending} type={'trending'} onChane={this.onChange} addLine={this.addLine} removeLine={this.removeLine} />
-      {/* <Button type={'submit'}/>
-      <Button type={'preview'}/> */}
+        <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
+        <CMSArea
+          data={this.state.spotlight}
+          type={'spotlight'}
+          onChange={this.changeItemData}
+          addLine={this.addLine}
+          removeLine={this.removeLine}
+        />
+        <CMSArea
+          data={this.state.cats}
+          type={'cats'}
+          onChange={this.changeItemData}
+          addLine={this.addLine}
+          removeLine={this.removeLine}
+        />
+        <CMSArea
+          data={this.state.trending}
+          type={'trending'}
+          onChange={this.changeItemData}
+          addLine={this.addLine}
+          removeLine={this.removeLine}
+        />
+        <Button onClick={this.displayJSON} label={' Preview JSON '} />
       </React.Fragment>
     )
   }
