@@ -1,5 +1,13 @@
 import React, { Component } from 'react'
 import LabelAndInput from './LabelAndInput'
+import styled from 'styled-components'
+import Title from '../styled-comps/Title'
+import AddLine from '../styled-comps/AddLine'
+import RemoveLine from '../styled-comps/RemoveLine'
+
+const StyledInput = styled(LabelAndInput)`
+grid-column-start: 1;
+`
 
 export default class CMSArea extends React.Component {
   constructor (props) {
@@ -16,21 +24,17 @@ export default class CMSArea extends React.Component {
     return editedItem
   }
   render () {
-    let divStyle = {
-      color: 'red',
-      gridColumnStart: 1
-    }
     return (
       <React.Fragment>
-        <div style={{gridColumnStart: '2'}}><div>{this.props.data.title}</div> <div onClick={() => this.props.addLine(this.props.type)}> + </div></div>
+        <Title style={{gridColumnStart: '2'}}>{this.props.data.title}</Title> <AddLine style={{gridColumnStart: 3}}onClick={() => this.props.addLine(this.props.type)}> Add Line + </AddLine>
         {this.props.data.items.length &&
           this.props.data.items.map((item, idx) => (
-          <div key={'container' + idx} >
-              <StyledLabel style={divStyle}label={'Image: '} name={'image'} value={item.image} onChange={e => this.onChange(e,idx,e.target.name)}/>
-              <LabelAndInput label={'Link: '} name={'link'} value={item.link} onChange={e => this.onChange(e,idx,e.target.name)}/>
-              <LabelAndInput label={'Text: '} name={'text'} value={item.text} onChange={e => this.onChange(e,idx,e.target.name)}/>
-              <div key={'remove'} onClick={() => this.props.removeLine(this.props.type, idx)}>-REMOVE-</div>
-            </div>
+            <React.Fragment key={idx}>
+              <LabelAndInput containerStyle={{gridColumnStart: 1}}label={'Image: '} name={'image'} value={item.image} onChange={e => this.onChange(e,idx,e.target.name)}/>
+              <LabelAndInput containerStyle={{gridColumnStart: 2}}label={'Link: '} name={'link'} value={item.link} onChange={e => this.onChange(e,idx,e.target.name)}/>
+              <LabelAndInput containerStyle={{gridColumnStart: 3}}label={'Text: '} name={'text'} value={item.text} onChange={e => this.onChange(e,idx,e.target.name)}/>
+              <RemoveLine style={{gridColumnStart: 4}} key={'remove'} onClick={() => this.props.removeLine(this.props.type, idx)}>REMOVE</RemoveLine>
+            </React.Fragment>
           ))}
       </React.Fragment>
     )

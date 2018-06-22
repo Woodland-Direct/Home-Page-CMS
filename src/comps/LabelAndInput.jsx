@@ -1,14 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
+import Input from '../styled-comps/Input'
+import Title from '../styled-comps/Title'
+
+const InputLabel = styled.div`
+padding-bottom: 2px;
+`
+
+
 const LabelAndInput = props => {
   return (
-    <React.Fragment>
-    <label>{props.label}</label>
-    <input
+    <div style={props.containerStyle}>
+    <InputLabel>{props.label}</InputLabel>
+    <Input
       name={props.name}
       value={props.value}
       onChange={props.onChange}
     />
-    </React.Fragment>
+    </div>
   )
 }
 

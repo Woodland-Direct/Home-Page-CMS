@@ -1,13 +1,14 @@
 import React from 'react'
 import LabelAndInput from './LabelAndInput'
+import Title from '../styled-comps/Title'
 const HeroArea = props => {
   return (
-    <div style={{display: 'flex'}}>
-    <div>Hero Image: </div>
-    <LabelAndInput label={'Image: '} name={'image'} value={props.data.image} onChange={props.onChange} />
-    <LabelAndInput label={'Link: '} name={'link'} value={props.data.link} onChange={props.onChange} />
-    <LabelAndInput label={'Text: '} name={'text'} value={props.data.text} onChange={props.onChange} />
-    </div>
+    <React.Fragment>
+    <Title style={{gridColumnStart: 2}}>Hero Image: </Title>
+    <LabelAndInput containerStyle={{gridColumnStart: 1}} label={'Image: '} name={'image'} value={props.data.image} onChange={props.onChange} />
+    <LabelAndInput containerStyle={{gridColumnStart: 2}} label={'Link: '} name={'link'} value={props.data.link} onChange={props.onChange} />
+    <LabelAndInput containerStyle={{gridColumnStart: 3}} label={'Text: '} name={'text'} value={props.data.text} onChange={props.onChange} />
+    </React.Fragment>
   )
 }
 
