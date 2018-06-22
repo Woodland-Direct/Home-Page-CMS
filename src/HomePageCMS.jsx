@@ -155,7 +155,7 @@ export default class HomePageCMS extends React.Component {
     return (
       <React.Fragment>
         <GridContainer>
-        <div style={{gridColumnStart: 2 }}> 🔥🔥🔥Generator🔥🔥🔥 </div>
+        <div style={{gridColumnStart: 2, fontSize: '20px' }}> 🔥 Generator 🔥 </div>
           <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
           <CMSArea
             data={this.state.spotlight}
