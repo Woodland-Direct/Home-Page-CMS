@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import HeroArea from './comps/HeroArea.jsx'
 import CMSArea from './comps/CMSArea.jsx'
 import Button from './comps/Button.jsx'
@@ -66,6 +67,19 @@ const data = {
   }
 }
 
+const GridContainer = styled.div`
+display: grid;
+grid-gap: 20px;
+grid-auto-columns: min-content;
+font-family: 'Helvetica';
+`
+
+const Results = styled.div`
+font-family: 'Helvetica';
+padding-top: 20px;
+padding-bottom: 20px;
+`
+
 export default class HomePageCMS extends React.Component {
   constructor () {
     super()
@@ -121,36 +135,53 @@ export default class HomePageCMS extends React.Component {
     })
   }
 
-  displayJSON = () => {
-    alert(JSON.stringify(this.state))
+  loadData = () => {
+    var data = prompt('Please Paste Data')
+    try {
+      data = JSON.parse(data)
+        this.setState({
+          hero: data.hero,
+          cats: data.cats,
+          spotlight: data.spotlight,
+          trending: data.trending
+        })
+    } catch (e) {
+      alert('🙁 🙁 🙁 No way, something went wrong 🙁 🙁 🙁')
+    }
+
   }
 
   render () {
     return (
       <React.Fragment>
-        <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
-        <CMSArea
-          data={this.state.spotlight}
-          type={'spotlight'}
-          onChange={this.changeItemData}
-          addLine={this.addLine}
-          removeLine={this.removeLine}
-        />
-        <CMSArea
-          data={this.state.cats}
-          type={'cats'}
-          onChange={this.changeItemData}
-          addLine={this.addLine}
-          removeLine={this.removeLine}
-        />
-        <CMSArea
-          data={this.state.trending}
-          type={'trending'}
-          onChange={this.changeItemData}
-          addLine={this.addLine}
-          removeLine={this.removeLine}
-        />
-        <Button onClick={this.displayJSON} label={' Preview JSON '} />
+        <GridContainer>
+        <div style={{gridColumnStart: 2, fontSize: '20px' }}> 🔥 Generator 🔥 </div>
+          <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
+          <CMSArea
+            data={this.state.spotlight}
+            type={'spotlight'}
+            onChange={this.changeItemData}
+            addLine={this.addLine}
+            removeLine={this.removeLine}
+          />
+          <CMSArea
+            data={this.state.cats}
+            type={'cats'}
+            onChange={this.changeItemData}
+            addLine={this.addLine}
+            removeLine={this.removeLine}
+          />
+          <CMSArea
+            data={this.state.trending}
+            type={'trending'}
+            onChange={this.changeItemData}
+            addLine={this.addLine}
+            removeLine={this.removeLine}
+          />
+          <Button label={'Load Data:  '} onClick={this.loadData} />
+        </GridContainer>
+        <Results> Results: </Results>
+        <div>{JSON.stringify(this.state)}</div>
       </React.Fragment>
     )
   }

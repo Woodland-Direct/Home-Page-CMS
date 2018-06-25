@@ -3,4 +3,4 @@ import ReactDOM from 'react-dom'
 
 import HomePageCMS from './HomePageCMS'
 
-ReactDOM.render(<HomePageCMS />, document.getElementById('hpc'))
+ReactDOM.render(<HomePageCMS />, document.getElementById('hcms-root'))
