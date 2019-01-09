@@ -8,6 +8,7 @@ const HeroArea = props => {
     <LabelAndInput containerStyle={{gridColumnStart: 1}} label={'Image: '} name={'image'} value={props.data.image} onChange={props.onChange} />
     <LabelAndInput containerStyle={{gridColumnStart: 2}} label={'Link: '} name={'link'} value={props.data.link} onChange={props.onChange} />
     <LabelAndInput containerStyle={{gridColumnStart: 3}} label={'Text: '} name={'text'} value={props.data.text} onChange={props.onChange} />
+    <LabelAndInput containerStyle={{gridColumnStart: 4}} label={'Alt: '} name={'alt'} value={props.data.alt} onChange={props.onChange} />
     </React.Fragment>
   )
 }

@@ -7,7 +7,8 @@ const data = {
   hero: {
     image: 'www.starwars.com',
     link: 'www.starwars.com',
-    text: 'Shop The Galaxy'
+    text: 'Shop The Galaxy',
+    alt: 'some alt stuff'
   },
   spotlight: {
     title: 'Spotlight',
