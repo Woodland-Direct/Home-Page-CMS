@@ -1,6 +1,6 @@
 import React from 'react'
 import LabelAndInput from './LabelAndInput'
-import Title from '../styled-comps/Title'
+import { Title } from '../styled-comps/StyleLibrary'
 const HeroArea = props => {
   return (
     <React.Fragment>

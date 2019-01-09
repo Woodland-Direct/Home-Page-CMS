@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Input from '../styled-comps/Input'
-import Title from '../styled-comps/Title'
+import {Input} from '../styled-comps/StyleLibrary'
 
 const InputLabel = styled.div`
 padding-bottom: 2px;

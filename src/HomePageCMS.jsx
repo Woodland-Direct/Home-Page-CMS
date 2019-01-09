@@ -16,7 +16,8 @@ const data = {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'spotlight',
-        order: 1
+        order: 1,
+        alt: 'some text'
       }
     ]
   },
@@ -27,31 +28,36 @@ const data = {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'Fireplace',
-        order: 1
+        order: 1,
+        alt: 'some text'
       },
       {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'Woood Stove',
-        order: 2
+        order: 2,
+        alt: 'some text'
       },
       {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'Chimney',
-        order: 3
+        order: 3,
+        alt: 'some text'
       },
       {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'Outdoor',
-        order: 4
+        order: 4,
+        alt: 'some text'
       },
       {
         image: 'www.starwars.com',
         link: 'www.starwars.com',
         text: 'Promotions',
-        order: 5
+        order: 5,
+        alt: 'some text'
       }
     ]
   },
@@ -61,7 +67,8 @@ const data = {
       {
         image: '',
         link: '',
-        text: 'trending'
+        text: 'trending',
+        alt: 'some text'
       }
     ]
   }
