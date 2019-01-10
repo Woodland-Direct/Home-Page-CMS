@@ -3,78 +3,7 @@ import styled from 'styled-components'
 import HeroArea from './comps/HeroArea.jsx'
 import CMSArea from './comps/CMSArea.jsx'
 import Button from './comps/Button.jsx'
-const data = {
-  hero: {
-    image: 'www.starwars.com',
-    link: 'www.starwars.com',
-    text: 'Shop The Galaxy',
-    alt: 'some alt stuff'
-  },
-  spotlight: {
-    title: 'Spotlight',
-    items: [
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'spotlight',
-        order: 1,
-        alt: 'some text'
-      }
-    ]
-  },
-  cats: {
-    title: 'Categories',
-    items: [
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'Fireplace',
-        order: 1,
-        alt: 'some text'
-      },
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'Woood Stove',
-        order: 2,
-        alt: 'some text'
-      },
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'Chimney',
-        order: 3,
-        alt: 'some text'
-      },
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'Outdoor',
-        order: 4,
-        alt: 'some text'
-      },
-      {
-        image: 'www.starwars.com',
-        link: 'www.starwars.com',
-        text: 'Promotions',
-        order: 5,
-        alt: 'some text'
-      }
-    ]
-  },
-  trending: {
-    title: 'Trending Now',
-    items: [
-      {
-        image: '',
-        link: '',
-        text: 'trending',
-        alt: 'some text'
-      }
-    ]
-  }
-}
-
+import {DATA} from './utils'
 const GridContainer = styled.div`
 display: grid;
 grid-gap: 20px;
@@ -92,10 +21,10 @@ export default class HomePageCMS extends React.Component {
   constructor () {
     super()
     this.state = {
-      hero: data.hero,
-      cats: data.cats,
-      spotlight: data.spotlight,
-      trending: data.trending
+      hero: DATA.hero,
+      cats: DATA.cats,
+      spotlight: DATA.spotlight,
+      trending: DATA.trending
     }
   }
 
@@ -110,11 +39,11 @@ export default class HomePageCMS extends React.Component {
     console.log(this.state[type])
   }
 
-  changeHeroData = e => {
-    let newHeroValue = this.state.hero
-    newHeroValue[e.target.name] = e.target.value
+  changeHeroData = (e, type) => {
+    let newHero = Object.assign({}, this.state.hero)
+    newHero[type][e.target.name] = e.target.value
     this.setState({
-      hero: newHeroValue
+      hero: newHero
     })
   }
 
@@ -147,24 +76,45 @@ export default class HomePageCMS extends React.Component {
     var data = prompt('Please Paste Data')
     try {
       data = JSON.parse(data)
-        this.setState({
-          hero: data.hero,
-          cats: data.cats,
-          spotlight: data.spotlight,
-          trending: data.trending
-        })
+      this.setState({
+        hero: data.hero,
+        cats: data.cats,
+        spotlight: data.spotlight,
+        trending: data.trending
+      })
     } catch (e) {
       alert('🙁 🙁 🙁 No way, something went wrong 🙁 🙁 🙁')
     }
-
   }
 
   render () {
+    let open = `<script id='hcms' type='x-data'>`
+    let close = `</script>`
     return (
       <React.Fragment>
         <GridContainer>
-        <div style={{gridColumnStart: 2, fontSize: '20px' }}> 🔥 Generator 🔥 </div>
-          <HeroArea data={this.state.hero} onChange={this.changeHeroData} />
+          <div style={{ gridColumnStart: 2, fontSize: '20px' }}> 🔥 Generator 🔥 </div>
+          <HeroArea
+            data={this.state.hero.mob}
+            label={'Mobile'}
+            onChange={e => {
+              this.changeHeroData(e, 'mob')
+            }}
+          />
+          <HeroArea
+            data={this.state.hero.tab}
+            label={'Tablet'}
+            onChange={e => {
+              this.changeHeroData(e, 'tab')
+            }}
+          />
+          <HeroArea
+            data={this.state.hero.desk}
+            label={'Desktop'}
+            onChange={e => {
+              this.changeHeroData(e, 'desk')
+            }}
+          />
           <CMSArea
             data={this.state.spotlight}
             type={'spotlight'}
@@ -189,7 +139,7 @@ export default class HomePageCMS extends React.Component {
           <Button label={'Load Data:  '} onClick={this.loadData} />
         </GridContainer>
         <Results> Results: </Results>
-        <div>{JSON.stringify(this.state)}</div>
+        <div>{open}{JSON.stringify(this.state)}{close}</div>
       </React.Fragment>
     )
   }
