@@ -55,8 +55,15 @@ export default class CMSArea extends React.Component {
                 value={item.text}
                 onChange={e => this.onChange(e, idx, e.target.name)}
               />
+              <LabelAndInput
+                containerStyle={{ gridColumnStart: 4 }}
+                label={'Alt: '}
+                name={'alt'}
+                value={item.alt}
+                onChange={e => this.onChange(e, idx, e.target.name)}
+              />
               <RemoveLine
-                style={{ gridColumnStart: 4 }}
+                style={{ gridColumnStart: 5 }}
                 key={'remove'}
                 onClick={() => this.props.removeLine(this.props.type, idx)}>
                 REMOVE
