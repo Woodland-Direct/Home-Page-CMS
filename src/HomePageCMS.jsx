@@ -23,7 +23,7 @@ export default class HomePageCMS extends React.Component {
     this.state = {
       hero: DATA.hero,
       cats: DATA.cats,
-      spotlight: DATA.spotlight,
+      inspiration: DATA.inspiration,
       trending: DATA.trending
     }
   }
@@ -79,7 +79,7 @@ export default class HomePageCMS extends React.Component {
       this.setState({
         hero: data.hero,
         cats: data.cats,
-        spotlight: data.spotlight,
+        inspiration: data.inspiration,
         trending: data.trending
       })
     } catch (e) {
@@ -116,8 +116,8 @@ export default class HomePageCMS extends React.Component {
             }}
           />
           <CMSArea
-            data={this.state.spotlight}
-            type={'spotlight'}
+            data={this.state.inspiration}
+            type={'inspiration'}
             onChange={this.changeItemData}
             addLine={this.addLine}
             removeLine={this.removeLine}

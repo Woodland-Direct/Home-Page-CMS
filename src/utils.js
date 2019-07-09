@@ -135,8 +135,8 @@ export const DATA = {
       }
     ]
   },
-  spotlight: {
-    title: 'Spotlight',
+  inspiration: {
+    title: 'Inspiration',
     items: [
       {
         image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_A02.jpg',
