@@ -155,12 +155,6 @@ export const DATA = {
         link: '/Outdoor/The-Outdoor-GreatRoom-Outdoor-Fireplaces',
         text: '',
         alt: ''
-      },
-      {
-        image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_D02.jpg',
-        link: '/Current-Promos',
-        text: '',
-        alt: ''
       }
     ]
   },
