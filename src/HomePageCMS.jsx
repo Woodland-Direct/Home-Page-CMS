@@ -24,6 +24,7 @@ export default class HomePageCMS extends React.Component {
       hero: DATA.hero,
       cats: DATA.cats,
       spotlight: DATA.spotlight,
+      promotions: DATA.promotions,
       trending: DATA.trending
     }
   }
@@ -80,6 +81,7 @@ export default class HomePageCMS extends React.Component {
         hero: data.hero,
         cats: data.cats,
         spotlight: data.spotlight,
+        promotions: data.promotions,
         trending: data.trending
       })
     } catch (e) {
@@ -114,6 +116,13 @@ export default class HomePageCMS extends React.Component {
             onChange={e => {
               this.changeHeroData(e, 'desk')
             }}
+          />
+          <CMSArea
+            data={this.state.promotions}
+            type={'promotions'}
+            onChange={this.changeItemData}
+            addLine={this.addLine}
+            removeLine={this.removeLine}
           />
           <CMSArea
             data={this.state.spotlight}

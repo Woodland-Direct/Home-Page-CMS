@@ -135,6 +135,34 @@ export const DATA = {
       }
     ]
   },
+  promotions: {
+    title: 'Promotions',
+    items: [
+      {
+        image: 'https://dev.woodlanddirect.com/homepage/promos/superior-promo.png',
+        link: '/',
+        alt: 'modern living room with white walls and fireplace'
+      },
+      {
+        image:
+          'https://dev.woodlanddirect.com/homepage/promos/memphis-promo.png',
+        link: '/',
+        alt: 'artificial gas logs with fire crackling in background'
+      },
+      {
+        image:
+          'https://dev.woodlanddirect.com/homepage/promos/primo-promo.png',
+        link: '/',
+        alt: 'naples fire pit table'
+      },
+      {
+        image:
+          'https://dev.woodlanddirect.com/homepage/promos/lynx-promo.png',
+        link: '/',
+        alt: 'wood paneled room with large windows. a fireplace is in the middle of the room.'
+      }
+    ]
+  },
   spotlight: {
     title: 'Spotlight',
     items: [
