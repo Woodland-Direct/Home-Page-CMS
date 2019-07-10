@@ -135,8 +135,8 @@ export const DATA = {
       }
     ]
   },
-  spotlight: {
-    title: 'Spotlight',
+  inspiration: {
+    title: 'Inspiration',
     items: [
       {
         image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_A02.jpg',
@@ -153,12 +153,6 @@ export const DATA = {
       {
         image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_C02.jpg',
         link: '/Outdoor/The-Outdoor-GreatRoom-Outdoor-Fireplaces',
-        text: '',
-        alt: ''
-      },
-      {
-        image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_D02.jpg',
-        link: '/Current-Promos',
         text: '',
         alt: ''
       }
