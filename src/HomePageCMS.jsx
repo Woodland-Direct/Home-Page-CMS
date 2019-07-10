@@ -3,18 +3,18 @@ import styled from 'styled-components'
 import HeroArea from './comps/HeroArea.jsx'
 import CMSArea from './comps/CMSArea.jsx'
 import Button from './comps/Button.jsx'
-import {DATA} from './utils'
+import { DATA } from './utils'
 const GridContainer = styled.div`
-display: grid;
-grid-gap: 20px;
-grid-auto-columns: min-content;
-font-family: 'Helvetica';
+  display: grid;
+  grid-gap: 20px;
+  grid-auto-columns: min-content;
+  font-family: 'Helvetica';
 `
 
 const Results = styled.div`
-font-family: 'Helvetica';
-padding-top: 20px;
-padding-bottom: 20px;
+  font-family: 'Helvetica';
+  padding-top: 20px;
+  padding-bottom: 20px;
 `
 
 export default class HomePageCMS extends React.Component {
@@ -23,7 +23,7 @@ export default class HomePageCMS extends React.Component {
     this.state = {
       hero: DATA.hero,
       cats: DATA.cats,
-      spotlight: DATA.spotlight,
+      inspiration: DATA.inspiration,
       promotions: DATA.promotions,
       trending: DATA.trending
     }
@@ -80,7 +80,7 @@ export default class HomePageCMS extends React.Component {
       this.setState({
         hero: data.hero,
         cats: data.cats,
-        spotlight: data.spotlight,
+        inspiration: data.inspiration,
         promotions: data.promotions,
         trending: data.trending
       })
@@ -125,8 +125,8 @@ export default class HomePageCMS extends React.Component {
             removeLine={this.removeLine}
           />
           <CMSArea
-            data={this.state.spotlight}
-            type={'spotlight'}
+            data={this.state.inspiration}
+            type={'inspiration'}
             onChange={this.changeItemData}
             addLine={this.addLine}
             removeLine={this.removeLine}
@@ -148,7 +148,11 @@ export default class HomePageCMS extends React.Component {
           <Button label={'Load Data:  '} onClick={this.loadData} />
         </GridContainer>
         <Results> Results: </Results>
-        <div>{open}{JSON.stringify(this.state)}{close}</div>
+        <div>
+          {open}
+          {JSON.stringify(this.state)}
+          {close}
+        </div>
       </React.Fragment>
     )
   }
