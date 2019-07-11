@@ -1,17 +1,20 @@
 export const OG_DATA = {
   hero: {
     mob: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     },
     tab: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     },
     desk: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     }
@@ -79,17 +82,20 @@ export const OG_DATA = {
 export const DATA = {
   hero: {
     mob: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     },
     tab: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     },
     desk: {
-      image: 'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
+      image:
+        'https://assets.woodlanddirect.com/home-page/2018.July_MobileFriendly.Homepage_Banner.4thOfJulySale_A03.jpg',
       link: '/Current-Promos',
       alt: ''
     }
@@ -135,6 +141,31 @@ export const DATA = {
       }
     ]
   },
+  promotions: {
+    title: 'Promotions',
+    items: [
+      {
+        image: 'https://dev.woodlanddirect.com/homepage/promos/superior-promo.png',
+        link: '/',
+        alt: 'modern living room with white walls and fireplace'
+      },
+      {
+        image: 'https://dev.woodlanddirect.com/homepage/promos/memphis-promo.png',
+        link: '/',
+        alt: 'artificial gas logs with fire crackling in background'
+      },
+      {
+        image: 'https://dev.woodlanddirect.com/homepage/promos/primo-promo.png',
+        link: '/',
+        alt: 'naples fire pit table'
+      },
+      {
+        image: 'https://dev.woodlanddirect.com/homepage/promos/lynx-promo.png',
+        link: '/',
+        alt: 'wood paneled room with large windows. a fireplace is in the middle of the room.'
+      }
+    ]
+  },
   inspiration: {
     title: 'Inspiration',
     items: [
@@ -162,7 +193,8 @@ export const DATA = {
     title: 'Trending Now',
     items: [
       {
-        image: 'https://assets.woodlanddirect.com/home-page/trend_EmpireBoulevardContemporaryDirect-VentFireplace-600px.jpg',
+        image:
+          'https://assets.woodlanddirect.com/home-page/trend_EmpireBoulevardContemporaryDirect-VentFireplace-600px.jpg',
         link: '/Fireplace-Accessories/Direct-Vent-Fireplaces/Empire-Boulevard-Direct-Vent-Linear-Gas-Fireplace-60',
         text: 'Empire Boulevard 60" Direct-Vent Fireplace',
         alt: ''
@@ -186,7 +218,8 @@ export const DATA = {
         alt: ''
       },
       {
-        image: 'https://assets.woodlanddirect.com/home-page/trend_Empire_Boulevard60ContemporaryVentlessFireplace-600px.jpg',
+        image:
+          'https://assets.woodlanddirect.com/home-page/trend_Empire_Boulevard60ContemporaryVentlessFireplace-600px.jpg',
         link: '/Fireplace-Accessories/Ventless-Fireplaces/Empire-Boulevard-Ventless-Linear-Gas-Fireplace-60',
         text: 'Boulevard 60" Ventless Fireplace',
         alt: ''
