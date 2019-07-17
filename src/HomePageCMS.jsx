@@ -31,11 +31,11 @@ export default class HomePageCMS extends React.Component {
 
   changeItemData = (type, idx, item) => {
     // use the type to get which we are editing
-    let specificItem = this.state[type]
+    let specificType = this.state[type]
     // then use the idx to access the array of that type
-    specificItem = specificItem[idx]
+    let specificItems = specificType.items
     this.setState({
-      specificItem: item
+      [specificType]: [...specificItems, item]
     })
     console.log(this.state[type])
   }
@@ -46,6 +46,21 @@ export default class HomePageCMS extends React.Component {
     this.setState({
       hero: newHero
     })
+  }
+
+  setArticleData = (idx, data) => {
+    let image = data.ogImage.url
+    let title = data.ogTitle
+    let newItems = this.state.inspiration.items
+    let specificItem = this.state.inspiration.items[idx]
+    let newObject = { image, link: specificItem.link, text: title, alt: specificItem.alt }
+    newItems[idx] = newObject
+    this.setState({
+      inspiration: {
+        items: newItems
+      }
+    })
+    console.log(this.state)
   }
 
   addLine = type => {
@@ -130,6 +145,7 @@ export default class HomePageCMS extends React.Component {
             onChange={this.changeItemData}
             addLine={this.addLine}
             removeLine={this.removeLine}
+            setArticleData={this.setArticleData}
           />
           <CMSArea
             data={this.state.cats}
