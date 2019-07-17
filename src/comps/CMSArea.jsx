@@ -44,32 +44,28 @@ export default class CMSArea extends Component {
         {this.props.data.items.length &&
           this.props.data.items.map((item, idx) => (
             <React.Fragment key={idx}>
-              {this.props.type !== 'inspiration' && (
-                <LabelAndInput
-                  containerStyle={{ gridColumnStart: 1 }}
-                  label={'Image: '}
-                  name={'image'}
-                  value={item.image}
-                  onChange={e => this.onChange(e, idx, e.target.name)}
-                />
-              )}
+              <LabelAndInput
+                containerStyle={{ gridColumnStart: 1 }}
+                label={this.props.type === 'inspiration' ? 'OpenGraph Img (edit only if needed)' : 'Image: '}
+                name={'image'}
+                value={item.image}
+                onChange={e => this.onChange(e, idx, e.target.name)}
+              />
               <LabelAndInput
                 containerStyle={{ gridColumnStart: 2 }}
-                label={'Link: '}
+                label={this.props.type === 'inspiration' ? 'Open Graph Article URL' : 'Link: '}
                 name={'link'}
                 value={item.link}
                 onChange={e => this.onChange(e, idx, e.target.name)}
                 onBlur={() => this.getArticleData(item.link, idx, this.props.setArticleData)}
               />
-              {this.props.type !== 'inspiration' && (
-                <LabelAndInput
-                  containerStyle={{ gridColumnStart: 3 }}
-                  label={'Text: '}
-                  name={'text'}
-                  value={item.text}
-                  onChange={e => this.onChange(e, idx, e.target.name)}
-                />
-              )}
+              <LabelAndInput
+                containerStyle={{ gridColumnStart: 3 }}
+                label={this.props.type === 'inspiration' ? 'OpenGraph Title (edit only if needed)' : 'Text: '}
+                name={'text'}
+                value={item.text}
+                onChange={e => this.onChange(e, idx, e.target.name)}
+              />
               <LabelAndInput
                 containerStyle={{ gridColumnStart: 4 }}
                 label={'Alt: '}
