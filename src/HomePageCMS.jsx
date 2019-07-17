@@ -34,8 +34,9 @@ export default class HomePageCMS extends React.Component {
     let specificType = this.state[type]
     // then use the idx to access the array of that type
     let specificItems = specificType.items
+    specificItems[idx] = item
     this.setState({
-      [specificType]: [...specificItems, item]
+      [type]: { items: specificItems }
     })
     console.log(this.state[type])
   }
@@ -89,9 +90,10 @@ export default class HomePageCMS extends React.Component {
   }
 
   loadData = () => {
-    var data = prompt('Please Paste Data')
+    let data = prompt('Please Paste Data')
     try {
       data = JSON.parse(data)
+      console.log(data)
       this.setState({
         hero: data.hero,
         cats: data.cats,
@@ -99,7 +101,9 @@ export default class HomePageCMS extends React.Component {
         promotions: data.promotions,
         trending: data.trending
       })
+      console.log(this.state)
     } catch (e) {
+      console.log(e)
       alert('🙁 🙁 🙁 No way, something went wrong 🙁 🙁 🙁')
     }
   }
