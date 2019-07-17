@@ -35,8 +35,9 @@ export default class HomePageCMS extends React.Component {
     // then use the idx to access the array of that type
     let specificItems = specificType.items
     specificItems[idx] = item
+    let currentTitle = specificType.title
     this.setState({
-      [type]: { items: specificItems }
+      [type]: { title: currentTitle, items: specificItems }
     })
     console.log(this.state[type])
   }
