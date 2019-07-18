@@ -10,7 +10,7 @@ const LabelAndInput = props => {
   return (
     <div style={props.containerStyle}>
       <InputLabel>{props.label}</InputLabel>
-      <Input name={props.name} value={props.value} onChange={props.onChange} />
+      <Input name={props.name} value={props.value} onChange={props.onChange} onBlur={props.onBlur} />
     </div>
   )
 }

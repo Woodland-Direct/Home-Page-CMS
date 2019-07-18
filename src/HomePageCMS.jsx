@@ -31,11 +31,13 @@ export default class HomePageCMS extends React.Component {
 
   changeItemData = (type, idx, item) => {
     // use the type to get which we are editing
-    let specificItem = this.state[type]
+    let specificType = this.state[type]
     // then use the idx to access the array of that type
-    specificItem = specificItem[idx]
+    let specificItems = specificType.items
+    specificItems[idx] = item
+    let currentTitle = specificType.title
     this.setState({
-      specificItem: item
+      [type]: { title: currentTitle, items: specificItems }
     })
     console.log(this.state[type])
   }
@@ -46,6 +48,21 @@ export default class HomePageCMS extends React.Component {
     this.setState({
       hero: newHero
     })
+  }
+
+  setArticleData = (idx, data) => {
+    let image = data.ogImage.url
+    let title = data.ogTitle
+    let newItems = this.state.inspiration.items
+    let specificItem = this.state.inspiration.items[idx]
+    let newObject = { image, link: specificItem.link, text: title, alt: specificItem.alt }
+    newItems[idx] = newObject
+    this.setState({
+      inspiration: {
+        items: newItems
+      }
+    })
+    console.log(this.state)
   }
 
   addLine = type => {
@@ -74,9 +91,10 @@ export default class HomePageCMS extends React.Component {
   }
 
   loadData = () => {
-    var data = prompt('Please Paste Data')
+    let data = prompt('Please Paste Data')
     try {
       data = JSON.parse(data)
+      console.log(data)
       this.setState({
         hero: data.hero,
         cats: data.cats,
@@ -84,7 +102,9 @@ export default class HomePageCMS extends React.Component {
         promotions: data.promotions,
         trending: data.trending
       })
+      console.log(this.state)
     } catch (e) {
+      console.log(e)
       alert('🙁 🙁 🙁 No way, something went wrong 🙁 🙁 🙁')
     }
   }
@@ -130,6 +150,7 @@ export default class HomePageCMS extends React.Component {
             onChange={this.changeItemData}
             addLine={this.addLine}
             removeLine={this.removeLine}
+            setArticleData={this.setArticleData}
           />
           <CMSArea
             data={this.state.cats}

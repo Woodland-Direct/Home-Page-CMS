@@ -170,20 +170,20 @@ export const DATA = {
     title: 'Inspiration',
     items: [
       {
-        image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_A02.jpg',
-        link: '/Outdoor/Outdoor-Fireplace-Information/Outdoor-Fireplace-Gas-Types',
+        image: '',
+        link: '',
         text: '',
         alt: ''
       },
       {
-        image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_B02.1.jpg',
-        link: '/Ready-to-Finish-Outdoor-Kitchens',
+        image: '',
+        link: '',
         text: '',
         alt: ''
       },
       {
-        image: 'https://assets.woodlanddirect.com/home-page/MobileFriendly_Homepage.Spotlight_C02.jpg',
-        link: '/Outdoor/The-Outdoor-GreatRoom-Outdoor-Fireplaces',
+        image: '',
+        link: '',
         text: '',
         alt: ''
       }
