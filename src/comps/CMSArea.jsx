@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import LabelAndInput from './LabelAndInput'
-import styled from 'styled-components'
 import { Title } from '../styled-comps/StyleLibrary'
 import { AddLine } from '../styled-comps/StyleLibrary'
 import { RemoveLine } from '../styled-comps/StyleLibrary'
+import ogs from 'open-graph-scraper'
 
-const StyledInput = styled(LabelAndInput)`
-grid-column-start: 1;
-`
-
-export default class CMSArea extends React.Component {
+export default class CMSArea extends Component {
   constructor (props) {
     super(props)
   }
@@ -20,37 +16,52 @@ export default class CMSArea extends React.Component {
     this.props.onChange(this.props.type, idx, individualItemToEdit)
   }
   processFieldChange = (item, value, field) => {
-    let editedItem = (item[field] = value)
-    return editedItem
+    item[field] = value
+    return item
+  }
+  getArticleData = (value, idx, setArticleData) => {
+    if (this.props.type === 'inspiration') {
+      let options = { url: value }
+      ogs(options)
+        .then(function (result) {
+          console.log('ogresults', result)
+          setArticleData(idx, result.data)
+        })
+        .catch(function (error) {
+          alert('no open graph info was able to be found:', error)
+          return error
+        })
+    }
   }
   render () {
     return (
       <React.Fragment>
-        <Title style={{ gridColumnStart: '2' }}>{this.props.data.title}</Title>
-        {' '}
+        <Title style={{ gridColumnStart: '2' }}>{this.props.data.title}</Title>{' '}
         <AddLine style={{ gridColumnStart: 3 }} onClick={() => this.props.addLine(this.props.type)}>
-          {' '}Add Line +{' '}
+          {' '}
+          Add Line +{' '}
         </AddLine>
         {this.props.data.items.length &&
           this.props.data.items.map((item, idx) => (
             <React.Fragment key={idx}>
               <LabelAndInput
                 containerStyle={{ gridColumnStart: 1 }}
-                label={'Image: '}
+                label={this.props.type === 'inspiration' ? 'OpenGraph Img (edit only if needed)' : 'Image: '}
                 name={'image'}
                 value={item.image}
                 onChange={e => this.onChange(e, idx, e.target.name)}
               />
               <LabelAndInput
                 containerStyle={{ gridColumnStart: 2 }}
-                label={'Link: '}
+                label={this.props.type === 'inspiration' ? 'Open Graph Article URL' : 'Link: '}
                 name={'link'}
                 value={item.link}
                 onChange={e => this.onChange(e, idx, e.target.name)}
+                onBlur={() => this.getArticleData(item.link, idx, this.props.setArticleData)}
               />
               <LabelAndInput
                 containerStyle={{ gridColumnStart: 3 }}
-                label={'Text: '}
+                label={this.props.type === 'inspiration' ? 'OpenGraph Title (edit only if needed)' : 'Text: '}
                 name={'text'}
                 value={item.text}
                 onChange={e => this.onChange(e, idx, e.target.name)}
